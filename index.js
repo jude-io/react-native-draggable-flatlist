@@ -118,7 +118,7 @@ class SortableFlatList extends Component {
         const spacerMeasurements = this._measurements[spacerIndex]
         const lastElementMeasurements = this._measurements[data.length - 1]
         if (activeRow === -1) return
-        // If user flings row up and lets go in the middle of an animation measurements can error out. 
+        // If user flings row up and lets go in the middle of an animation measurements can error out.
         // Give layout animations some time to complete and animate element into place before calling onMoveEnd
 
         // Spacers have different positioning depending on whether the spacer row is before or after the active row.
@@ -322,6 +322,7 @@ class SortableFlatList extends Component {
           move={this.move}
           moveEnd={this.moveEnd}
           extraData={this.state.extraData}
+          isDirectlyBelowSpacerRow={isSpacerRow}
         />
         {endPadding && <View style={spacerStyle} />}
       </View>
@@ -346,7 +347,7 @@ class SortableFlatList extends Component {
       this.containerView.measure((x, y, width, height, pageX, pageY) => {
         this._containerOffset = horizontal ? pageX : pageY
         this._containerSize = horizontal ? width : height
-      })      
+      })
     }
   }
 
